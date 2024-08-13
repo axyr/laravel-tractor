@@ -1,0 +1,24 @@
+{
+    "name": "axyr/laravel-crud-generator",
+    "description": "Opiniated Laravel CRUD generator for a Module/Repository/Filter based CRUD setup.",
+    "type": "library",
+    "autoload": {
+        "psr-4": {
+            "Axyr\\CrudGenerator\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Martijn van Nieuwenhoven",
+            "email": "info@axyrmedia.nl"
+        }
+    ],
+    "require": {
+        "php": "^8.2",
+        "laravel/framework": "^11.9"
+    },
+    "require-dev": {
+        "roave/security-advisories": "dev-latest",
+        "orchestra/testbench": "^9.1"
+    }
+}
