@@ -22,6 +22,7 @@ class CombinedGeneratorTest extends TestCase
             'app/Modules/Posts/Repositories/CommentRepository.php',
             'app/Modules/Posts/Http/Requests/CommentRequest.php',
             'app/Modules/Posts/Http/Resources/CommentResource.php',
+            'app/Modules/Posts/Seeders/CommentPermissionSeeder.php',
         ];
 
         $this->assertEquals($expectedGeneratedFiles, $generator->generatedFiles());

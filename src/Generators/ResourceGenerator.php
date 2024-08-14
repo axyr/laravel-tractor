@@ -16,7 +16,7 @@ class ResourceGenerator extends AbstractGenerator
 
     public function mixin(): string
     {
-        return sprintf('%s\%s\Models\%s', $this->baseNamespace(), $this->module(), $this->name());
+        return sprintf('\%s\%s\Models\%s', $this->baseNamespace(), $this->module(), $this->name());
     }
 
     public function replacements(): array

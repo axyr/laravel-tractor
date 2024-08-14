@@ -33,7 +33,7 @@ class ResourceGeneratorTest extends GeneratorTestAbstract
                 'expectedStrings' => [
                     'class PostResource extends JsonResource',
                     'namespace App\Modules\Posts\Http\Resources;',
-                    '@mixin App\Modules\Posts\Models\Post',
+                    '@mixin \App\Modules\Posts\Models\Post',
                 ],
             ],
         ];

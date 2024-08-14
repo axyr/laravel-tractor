@@ -24,6 +24,7 @@ class CombinedGenerator
             RepositoryGenerator::class,
             RequestGenerator::class,
             ResourceGenerator::class,
+            PermissionSeederGenerator::class,
         ];
     }
 
