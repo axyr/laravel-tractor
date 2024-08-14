@@ -2,6 +2,7 @@
 
 namespace Axyr\CrudGenerator;
 
+use Axyr\CrudGenerator\Commands\GenerateCrud;
 use Illuminate\Support\ServiceProvider;
 
 class CrudGeneratorServiceProvider extends ServiceProvider
@@ -28,7 +29,7 @@ class CrudGeneratorServiceProvider extends ServiceProvider
     {
         if ($this->app->runningInConsole()) {
             $this->commands([
-
+                GenerateCrud::class,
             ]);
         }
     }

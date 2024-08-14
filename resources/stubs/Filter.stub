@@ -1,5 +1,7 @@
 <?php
 
+namespace {{namespace}};
+
 use Axyr\CrudGenerator\Filters\ArrayFilters;
 use Axyr\CrudGenerator\Filters\Contracts\SortableInterface;
 

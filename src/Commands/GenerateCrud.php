@@ -1,6 +1,6 @@
 <?php
 
-namespace Commands;
+namespace Axyr\CrudGenerator\Commands;
 
 use Axyr\CrudGenerator\Generators\CombinedGenerator;
 use Illuminate\Console\Command;

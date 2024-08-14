@@ -37,6 +37,7 @@ class FilterGeneratorTest extends GeneratorTestAbstract
                 'module' => 'Posts',
                 'expectedPath' => 'app/Modules/Posts/Filters/CommentFilter.php',
                 'expectedStrings' => [
+                    'namespace App\Modules\Posts\Filters;',
                     'class CommentFilter',
                 ],
             ],
