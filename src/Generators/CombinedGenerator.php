@@ -2,9 +2,6 @@
 
 namespace Axyr\CrudGenerator\Generators;
 
-use Illuminate\Support\Facades\Artisan;
-use Illuminate\Support\Str;
-
 class CombinedGenerator
 {
     private array $generatedFiles = [];
@@ -30,25 +27,12 @@ class CombinedGenerator
 
     public function generate(): void
     {
-        $this->generateClassFiles();
-        $this->generateMigration();
-    }
-
-    private function generateClassFiles(): void
-    {
         foreach ($this->generators() as $generatorClass) {
             /** @var \Axyr\CrudGenerator\Generators\AbstractGenerator $generator */
             $generator = new $generatorClass($this->name, $this->module);
             $generator->write();
             $this->generatedFiles[] = $generator->path();
         }
-    }
-
-    private function generateMigration(): void
-    {
-        $command = sprintf('make:migration create_%s_table', strtolower(Str::plural($this->name)));
-
-        Artisan::call($command);
     }
 
     public function generatedFiles(): array
