@@ -1,0 +1,20 @@
+<?php
+
+namespace {{namespace}};
+
+use Axyr\CrudGenerator\Filters\Traits\FiltersRecords;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Carbon;
+
+/**
+ * @property int $id
+ *
+ * @property Carbon $created_at
+ * @property Carbon $updated_at
+ */
+class {{modelName}} extends Model
+{
+    use FiltersRecords;
+
+    protected $guarded = ['id'];
+}

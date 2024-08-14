@@ -1,0 +1,53 @@
+<?php
+
+namespace {{namespace}};
+
+use App\Http\Controllers\Controller;
+use {{baseNamespace}}\{{moduleName}}\Models\{{modelName}};
+use {{baseNamespace}}\{{moduleName}}\Repositories\{{modelName}}Repository;
+use {{baseNamespace}}\{{moduleName}}\Http\Requests\{{modelName}}Request;
+use {{baseNamespace}}\{{moduleName}}\Http\Resources\{{modelName}}Resource;
+use Illuminate\Http\Request;
+use Illuminate\Http\Resources\Json\ResourceCollection;
+use Illuminate\Http\Response;
+
+class {{controllerName}} extends Controller
+{
+    public function __construct(protected {{modelName}}Repository $repository)
+    {
+        $this->authorizeResource({{modelName}}::class);
+    }
+
+    public function index(Request $request): ResourceCollection
+    {
+        ${{variableNamePlural}} = $this->repository->setRequest($request)->paginate();
+
+        return {{modelName}}Resource::collection(${{variableNamePlural}})->preserveQuery();
+    }
+
+    public function store({{modelName}}Request $request): {{modelName}}Resource
+    {
+        ${{variableName}} = $this->repository->setRequest($request)->store($request->validated());
+
+        return new {{modelName}}Resource(${{variableName}});
+    }
+
+    public function show({{modelName}} ${{variableName}}): {{modelName}}Resource
+    {
+        return new {{modelName}}Resource(${{variableName}});
+    }
+
+    public function update({{modelName}}Request $request, {{modelName}} ${{variableName}}): {{modelName}}Resource
+    {
+        ${{variableName}}->update($request->validated());
+
+        return new {{modelName}}Resource(${{variableName}});
+    }
+
+    public function destroy({{modelName}} ${{variableName}}): Response
+    {
+        ${{variableName}}->delete();
+
+        return response()->noContent();
+    }
+}

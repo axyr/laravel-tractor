@@ -1,0 +1,19 @@
+<?php
+
+use Axyr\CrudGenerator\Filters\ArrayFilters;
+use Axyr\CrudGenerator\Filters\Contracts\SortableInterface;
+
+class {{filterName}} extends ArrayFilters implements SortableInterface
+{
+    public function sortableColumns(): array
+    {
+        return [
+            'id',
+        ];
+    }
+
+    public function q(string $search): void
+    {
+        $this->query->where('id', '=', $search);
+    }
+}

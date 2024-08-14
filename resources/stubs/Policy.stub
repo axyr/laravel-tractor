@@ -1,0 +1,34 @@
+<?php
+
+namespace {{namespace}};
+
+use {{userModelClassName}};
+use {{baseNamespace}}\{{moduleName}}\Models\{{modelName}};
+
+class {{policyName}}
+{
+    public function viewAny({{userModelShortName}} $user): bool
+    {
+        return $user->hasPermissionTo('{{variableName}}.viewAny');
+    }
+
+    public function view({{userModelShortName}} $user, {{modelName}} ${{variableName}}): bool
+    {
+        return $user->hasPermissionTo('{{variableName}}.view');
+    }
+
+    public function create({{userModelShortName}} $user): bool
+    {
+        return $user->hasPermissionTo('{{variableName}}.create');
+    }
+
+    public function update({{userModelShortName}} $user, {{modelName}} ${{variableName}}): bool
+    {
+        return $user->hasPermissionTo('{{variableName}}.update');
+    }
+
+    public function delete({{userModelShortName}} $user, {{modelName}} ${{variableName}}): bool
+    {
+        return $user->hasPermissionTo('{{variableName}}.delete');
+    }
+}

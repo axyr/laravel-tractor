@@ -1,0 +1,45 @@
+<?php
+
+namespace {{namespace}};
+
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Seeder;
+use Spatie\Permission\Models\Permission;
+use Spatie\Permission\Models\Role;
+use Spatie\Permission\PermissionRegistrar;
+
+class {{seederName}} extends Seeder
+{
+    private null|Model|Role $defaultRole;
+
+    public function run(): void
+    {
+        app()[PermissionRegistrar::class]->forgetCachedPermissions();
+
+        $this->createDefaultRole();
+        $this->createPermissions();
+    }
+
+    private function createDefaultRole(): void
+    {
+        $defaultRoleName = config('crudgenerator.default_role_name');
+        $defaultGuardName = config('crudgenerator.default_guard_name');
+
+        $this->defaultRole = Role::query()->firstOrCreate(['name' => $defaultRoleName], ['guard_name' => $defaultGuardName]);
+
+        $permission = Permission::query()->firstOrCreate(['name' => $defaultRoleName]);
+
+        $this->defaultRole->givePermissionTo($permission);
+    }
+
+    private function createPermissions(): void
+    {
+        $viewAny = Permission::query()->firstOrCreate(['name' => '{{variableName}}.viewAny']);
+        $view = Permission::query()->firstOrCreate(['name' => '{{variableName}}.view']);
+        $create = Permission::query()->firstOrCreate(['name' => '{{variableName}}.create']);
+        $update = Permission::query()->firstOrCreate(['name' => '{{variableName}}.update']);
+        $delete = Permission::query()->firstOrCreate(['name' => '{{variableName}}.delete']);
+
+        $this->defaultRole->givePermissionTo($viewAny, $view, $create, $update, $delete);
+    }
+}

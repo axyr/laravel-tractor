@@ -1,0 +1,21 @@
+<?php
+
+namespace {{namespace}};
+
+use {{baseNamespace}}\{{moduleName}}\Models\{{modelName}};
+use {{baseNamespace}}\{{moduleName}}\Filters\{{modelName}}Filter;
+use Axyr\CrudGenerator\Repositories\AbstractRepository;
+use Illuminate\Database\Eloquent\Builder;
+
+class {{repositoryName}} extends AbstractRepository
+{
+    public function __construct({{modelName}}Filter $filters)
+    {
+        parent::__construct($filters);
+    }
+
+    public function query(): Builder
+    {
+        return {{modelName}}::filterBy($this->filters);
+    }
+}
