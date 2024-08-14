@@ -20,10 +20,17 @@
     ],
     "require": {
         "php": "^8.2",
-        "laravel/framework": "^11.9"
+        "laravel/framework": "^11.0"
     },
     "require-dev": {
         "roave/security-advisories": "dev-latest",
         "orchestra/testbench": "^9.1"
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Axyr\\CrudGenerator\\CrudGeneratorServiceProvider"
+            ]
+        }
     }
 }
