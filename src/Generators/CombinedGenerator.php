@@ -22,6 +22,7 @@ class CombinedGenerator
             RequestGenerator::class,
             ResourceGenerator::class,
             PermissionSeederGenerator::class,
+            ComposerGenerator::class,
         ];
     }
 
