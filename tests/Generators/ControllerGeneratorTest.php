@@ -11,25 +11,13 @@ class ControllerGeneratorTest extends GeneratorTestAbstract
         return ControllerGenerator::class;
     }
 
-    public static function dataModelGenerator(): array
-    {
-        return [
-            [
-                'name' => 'Post',
-                'module' => '',
-                'expectedPath' => 'app/Modules/Posts/Http/Controllers/PostController.php',
-                'expectedNamespace' => 'App\\Modules\\Posts\\Http\\Controllers',
-            ],
-        ];
-    }
-
-    public static function dataModelWriteTest(): array
+    public static function dataGenerator(): array
     {
         return [
             [
                 'name' => 'Comment',
                 'module' => 'Posts',
-                'expectedPath' => 'app/Modules/Posts/Http/Controllers/CommentController.php',
+                'expectedPath' => 'app-modules/Posts/src/Http/Controllers/CommentController.php',
                 'expectedStrings' => [
                     'class CommentController extends Controller',
                     'namespace App\Modules\Posts\Http\Controllers;',

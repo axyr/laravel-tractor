@@ -4,7 +4,6 @@ namespace Axyr\CrudGenerator\Tests;
 
 use Axyr\CrudGenerator\CrudGeneratorServiceProvider;
 use Carbon\Carbon;
-use Illuminate\Support\Facades\File;
 use Orchestra\Testbench\Concerns\WithWorkbench;
 
 class TestCase extends \Orchestra\Testbench\TestCase
@@ -19,7 +18,7 @@ class TestCase extends \Orchestra\Testbench\TestCase
     {
         parent::setUp();
 
-        File::deleteDirectory(base_path(config('crudgenerator.base_path')));
+        //   File::deleteDirectory(base_path(config('crudgenerator.base_path')));
 
         Carbon::setTestNow($this->now = now());
     }

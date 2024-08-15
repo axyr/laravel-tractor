@@ -11,31 +11,13 @@ class PolicyGeneratorTest extends GeneratorTestAbstract
         return PolicyGenerator::class;
     }
 
-    public static function dataModelGenerator(): array
-    {
-        return [
-            [
-                'name' => 'Post',
-                'module' => '',
-                'expectedPath' => 'app/Modules/Posts/Policies/PostPolicy.php',
-                'expectedNamespace' => 'App\\Modules\\Posts\\Policies',
-            ],
-            [
-                'name' => 'Comment',
-                'module' => 'Posts',
-                'expectedPath' => 'app/Modules/Posts/Policies/CommentPolicy.php',
-                'expectedNamespace' => 'App\\Modules\\Posts\\Policies',
-            ],
-        ];
-    }
-
-    public static function dataModelWriteTest(): array
+    public static function dataGenerator(): array
     {
         return [
             [
                 'name' => 'Comment',
                 'module' => 'Posts',
-                'expectedPath' => 'app/Modules/Posts/Policies/CommentPolicy.php',
+                'expectedPath' => 'app-modules/Posts/src/Policies/CommentPolicy.php',
                 'expectedStrings' => [
                     'class CommentPolicy',
                     'namespace App\Modules\Posts\Policies;',

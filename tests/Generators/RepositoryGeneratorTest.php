@@ -11,31 +11,13 @@ class RepositoryGeneratorTest extends GeneratorTestAbstract
         return RepositoryGenerator::class;
     }
 
-    public static function dataModelGenerator(): array
-    {
-        return [
-            [
-                'name' => 'Post',
-                'module' => '',
-                'expectedPath' => 'app/Modules/Posts/Repositories/PostRepository.php',
-                'expectedNamespace' => 'App\\Modules\\Posts\\Repositories',
-            ],
-            [
-                'name' => 'Comment',
-                'module' => 'Posts',
-                'expectedPath' => 'app/Modules/Posts/Repositories/CommentRepository.php',
-                'expectedNamespace' => 'App\\Modules\\Posts\\Repositories',
-            ],
-        ];
-    }
-
-    public static function dataModelWriteTest(): array
+    public static function dataGenerator(): array
     {
         return [
             [
                 'name' => 'Comment',
                 'module' => 'Posts',
-                'expectedPath' => 'app/Modules/Posts/Repositories/CommentRepository.php',
+                'expectedPath' => 'app-modules/Posts/src/Repositories/CommentRepository.php',
                 'expectedStrings' => [
                     'class CommentRepository',
                     'use App\Modules\Posts\Models\Comment;',

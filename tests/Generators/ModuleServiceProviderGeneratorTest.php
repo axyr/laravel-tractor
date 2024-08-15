@@ -2,13 +2,13 @@
 
 namespace Axyr\CrudGenerator\Tests\Generators;
 
-use Axyr\CrudGenerator\Generators\FilterGenerator;
+use Axyr\CrudGenerator\Generators\ModuleServiceProviderGenerator;
 
-class FilterGeneratorTest extends GeneratorTestAbstract
+class ModuleServiceProviderGeneratorTest extends GeneratorTestAbstract
 {
     public function generatorClassName(): string
     {
-        return FilterGenerator::class;
+        return ModuleServiceProviderGenerator::class;
     }
 
     public static function dataGenerator(): array
@@ -17,10 +17,9 @@ class FilterGeneratorTest extends GeneratorTestAbstract
             [
                 'name' => 'Comment',
                 'module' => 'Posts',
-                'expectedPath' => 'app-modules/Posts/src/Filters/CommentFilter.php',
+                'expectedPath' => 'app-modules/Posts/src/PostServiceProvider.php',
                 'expectedStrings' => [
-                    'namespace App\Modules\Posts\Filters;',
-                    'class CommentFilter',
+                    'class PostServiceProvider extends ServiceProvider',
                 ],
             ],
         ];

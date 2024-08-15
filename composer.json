@@ -20,7 +20,8 @@
     ],
     "require": {
         "php": "^8.2",
-        "laravel/framework": "^11.0"
+        "laravel/framework": "^11.0",
+        "wikimedia/composer-merge-plugin": "^2.1"
     },
     "require-dev": {
         "roave/security-advisories": "dev-latest",
@@ -31,6 +32,11 @@
             "providers": [
                 "Axyr\\CrudGenerator\\CrudGeneratorServiceProvider"
             ]
+        }
+    },
+    "config": {
+        "allow-plugins": {
+            "wikimedia/composer-merge-plugin": true
         }
     }
 }

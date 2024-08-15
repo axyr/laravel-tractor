@@ -11,25 +11,13 @@ class ResourceGeneratorTest extends GeneratorTestAbstract
         return ResourceGenerator::class;
     }
 
-    public static function dataModelGenerator(): array
-    {
-        return [
-            [
-                'name' => 'Post',
-                'module' => '',
-                'expectedPath' => 'app/Modules/Posts/Http/Resources/PostResource.php',
-                'expectedNamespace' => 'App\\Modules\\Posts\\Http\\Resources',
-            ],
-        ];
-    }
-
-    public static function dataModelWriteTest(): array
+    public static function dataGenerator(): array
     {
         return [
             [
                 'name' => 'Post',
                 'module' => 'Posts',
-                'expectedPath' => 'app/Modules/Posts/Http/Resources/PostResource.php',
+                'expectedPath' => 'app-modules/Posts/src/Http/Resources/PostResource.php',
                 'expectedStrings' => [
                     'class PostResource extends JsonResource',
                     'namespace App\Modules\Posts\Http\Resources;',

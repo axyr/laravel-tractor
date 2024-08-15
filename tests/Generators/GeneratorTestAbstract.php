@@ -8,20 +8,13 @@ use PHPUnit\Framework\Attributes\DataProvider;
 
 abstract class GeneratorTestAbstract extends TestCase
 {
-    #[DataProvider('dataModelGenerator')]
-    public function testModelGenerator(string $name, string $module, string $expectedPath, string $expectedNamespace): void
+    #[DataProvider('dataGenerator')]
+    public function testGenerator(string $name, string $module, string $expectedPath, array $expectedStrings = [], array $config = []): void
     {
-        $generator = $this->generator($name, $module);
-
-        $this->assertEquals($expectedPath, $generator->path());
-        $this->assertEquals($expectedNamespace, $generator->namespace());
-    }
-
-    abstract public static function dataModelGenerator(): array;
-
-    #[DataProvider('dataModelWriteTest')]
-    public function testModelWriteTest(string $name, string $module, string $expectedPath, array $expectedStrings = []): void
-    {
+        foreach ($config as $key => $value) {
+            config()->set($key, $value);
+        }
+        
         $generator = $this->generator($name, $module);
 
         $generator->write();
@@ -43,5 +36,5 @@ abstract class GeneratorTestAbstract extends TestCase
 
     abstract public function generatorClassName(): string;
 
-    abstract public static function dataModelWriteTest(): array;
+    abstract public static function dataGenerator(): array;
 }

@@ -11,40 +11,34 @@ class ModelGeneratorTest extends GeneratorTestAbstract
         return ModelGenerator::class;
     }
 
-    public static function dataModelGenerator(): array
+    public static function dataGenerator(): array
     {
         return [
             [
                 'name' => 'Post',
                 'module' => '',
-                'expectedPath' => 'app/Modules/Posts/Models/Post.php',
-                'expectedNamespace' => 'App\\Modules\\Posts\\Models',
+                'expectedPath' => 'app-modules/Posts/src/Models/Post.php',
+                'expectedStrings' => [
+                    'class Post extends Model',
+                    'namespace App\Modules\Posts\Models;',
+                ],
             ],
             [
                 'name' => 'Comment',
                 'module' => 'Posts',
-                'expectedPath' => 'app/Modules/Posts/Models/Comment.php',
-                'expectedNamespace' => 'App\\Modules\\Posts\\Models',
+                'expectedPath' => 'app-modules/Posts/src/Models/Comment.php',
+                'expectedStrings' => [
+                    'class Comment extends Model',
+                    'namespace App\Modules\Posts\Models;',
+                ],
             ],
             [
                 'name' => 'Articles',
                 'module' => '',
-                'expectedPath' => 'app/Modules/Articles/Models/Article.php',
-                'expectedNamespace' => 'App\\Modules\\Articles\\Models',
-            ],
-        ];
-    }
-
-    public static function dataModelWriteTest(): array
-    {
-        return [
-            [
-                'name' => 'Comment',
-                'module' => 'Posts',
-                'expectedPath' => 'app/Modules/Posts/Models/Comment.php',
+                'expectedPath' => 'app-modules/Articles/src/Models/Article.php',
                 'expectedStrings' => [
-                    'class Comment extends Model',
-                    'namespace App\Modules\Posts\Models;',
+                    'class Article extends Model',
+                    'namespace App\Modules\Articles\Models;',
                 ],
             ],
         ];

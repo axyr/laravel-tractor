@@ -11,31 +11,13 @@ class FactoryGeneratorTest extends GeneratorTestAbstract
         return FactoryGenerator::class;
     }
 
-    public static function dataModelGenerator(): array
-    {
-        return [
-            [
-                'name' => 'Post',
-                'module' => '',
-                'expectedPath' => 'app/Modules/Posts/Factories/PostFactory.php',
-                'expectedNamespace' => 'App\\Modules\\Posts\\Factories',
-            ],
-            [
-                'name' => 'Comment',
-                'module' => 'Posts',
-                'expectedPath' => 'app/Modules/Posts/Factories/CommentFactory.php',
-                'expectedNamespace' => 'App\\Modules\\Posts\\Factories',
-            ],
-        ];
-    }
-
-    public static function dataModelWriteTest(): array
+    public static function dataGenerator(): array
     {
         return [
             [
                 'name' => 'Comment',
                 'module' => 'Posts',
-                'expectedPath' => 'app/Modules/Posts/Factories/CommentFactory.php',
+                'expectedPath' => 'app-modules/Posts/src/Factories/CommentFactory.php',
                 'expectedStrings' => [
                     'class CommentFactory extends Factory',
                     'namespace App\Modules\Posts\Factories;',

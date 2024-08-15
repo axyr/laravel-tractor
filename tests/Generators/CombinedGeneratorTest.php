@@ -14,15 +14,15 @@ class CombinedGeneratorTest extends TestCase
         $generator->generate();
 
         $expectedGeneratedFiles = [
-            'app/Modules/Posts/Models/Comment.php',
-            'app/Modules/Posts/Http/Controllers/CommentController.php',
-            'app/Modules/Posts/Factories/CommentFactory.php',
-            'app/Modules/Posts/Filters/CommentFilter.php',
-            'app/Modules/Posts/Policies/CommentPolicy.php',
-            'app/Modules/Posts/Repositories/CommentRepository.php',
-            'app/Modules/Posts/Http/Requests/CommentRequest.php',
-            'app/Modules/Posts/Http/Resources/CommentResource.php',
-            'app/Modules/Posts/Seeders/CommentPermissionSeeder.php',
+            'app-modules/Posts/src/Models/Comment.php',
+            'app-modules/Posts/src/Http/Controllers/CommentController.php',
+            'app-modules/Posts/src/Factories/CommentFactory.php',
+            'app-modules/Posts/src/Filters/CommentFilter.php',
+            'app-modules/Posts/src/Policies/CommentPolicy.php',
+            'app-modules/Posts/src/Repositories/CommentRepository.php',
+            'app-modules/Posts/src/Http/Requests/CommentRequest.php',
+            'app-modules/Posts/src/Http/Resources/CommentResource.php',
+            'app-modules/Posts/src/Seeders/CommentPermissionSeeder.php',
         ];
 
         $this->assertEquals($expectedGeneratedFiles, $generator->generatedFiles());

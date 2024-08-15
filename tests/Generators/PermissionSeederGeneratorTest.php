@@ -11,25 +11,13 @@ class PermissionSeederGeneratorTest extends GeneratorTestAbstract
         return PermissionSeederGenerator::class;
     }
 
-    public static function dataModelGenerator(): array
+    public static function dataGenerator(): array
     {
         return [
             [
                 'name' => 'Comment',
                 'module' => 'Posts',
-                'expectedPath' => 'app/Modules/Posts/Seeders/CommentPermissionSeeder.php',
-                'expectedNamespace' => 'App\\Modules\\Posts\\Seeders',
-            ],
-        ];
-    }
-
-    public static function dataModelWriteTest(): array
-    {
-        return [
-            [
-                'name' => 'Comment',
-                'module' => 'Posts',
-                'expectedPath' => 'app/Modules/Posts/Seeders/CommentPermissionSeeder.php',
+                'expectedPath' => 'app-modules/Posts/src/Seeders/CommentPermissionSeeder.php',
                 'expectedStrings' => [
                     'class CommentPermissionSeeder extends Seeder',
                     'namespace App\Modules\Posts\Seeders;',

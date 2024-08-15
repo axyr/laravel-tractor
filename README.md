@@ -40,7 +40,7 @@ The generate command will generate the following files:
 
 ## Modules
 
-By Default the files will be installed in a app/Modules directory.
+By Default the files will be installed in a app-modules directory.
 
 The philosophy here is that with Repositories, Filters and Policy classes, we are highly likely creating an above average complex application,
 where we want strict separation of concerns from the start and not only groupd files by type only.

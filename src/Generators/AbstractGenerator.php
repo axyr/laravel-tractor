@@ -60,16 +60,34 @@ abstract class AbstractGenerator
         return config('crudgenerator.base_namespace');
     }
 
+    public function srcDirectory(): ?string
+    {
+        return config('crudgenerator.src_directory');
+    }
+
+    public function testDirectory(): ?string
+    {
+        return config('crudgenerator.test_directory');
+    }
+
+    public function fileSuffix(): string
+    {
+        return '.php';
+    }
+
     public function path(): string
     {
-        return sprintf('%s/%s/%s/%s.php', $this->basePath(), $this->module(), $this->directory(), $this->className());
+        $parts = array_filter([$this->basePath(), $this->module(), $this->srcDirectory(), $this->directory(), $this->className()]);
+
+        return sprintf('%s%s', implode('/', $parts), $this->fileSuffix());
     }
 
     public function namespace(): string
     {
         $directory = str_replace('/', '\\', $this->directory());
+        $parts = array_filter([$this->baseNamespace(), $this->module(), $directory]);
 
-        return sprintf('%s\\%s\\%s', $this->baseNamespace(), $this->module(), $directory);
+        return implode('\\', $parts);
     }
 
     public function write(): void
@@ -114,6 +132,8 @@ abstract class AbstractGenerator
         return [
             '{{baseNamespace}}' => $this->baseNamespace(),
             '{{namespace}}' => $this->namespace(),
+            '{{srcDirectory}}' => $this->srcDirectory(),
+            '{{testDirectory}}' => $this->testDirectory(),
             '{{moduleName}}' => $this->module(),
             '{{modelName}}' => $this->name(),
             '{{variableName}}' => $this->variableName(),

@@ -1,0 +1,14 @@
+{
+    "name": "{{composerName}}",
+    "description": "{{moduleName}}",
+    "autoload": {
+        "psr-4": {
+            "{{autoloadPath}}\\": "{{srcDirectory}}/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "{{autoloadPath}}\\Tests\\": "{{testDirectory}}/"
+        }
+    }
+}
