@@ -58,6 +58,11 @@ abstract class AbstractGenerator
         return $this->name;
     }
 
+    public function namePlural(): string
+    {
+        return Str::plural($this->name());
+    }
+
     public function basePath(): string
     {
         return config('crudgenerator.base_path');
@@ -149,6 +154,7 @@ abstract class AbstractGenerator
             '{{testDirectory}}' => $this->testDirectory(),
             '{{moduleName}}' => $this->module(),
             '{{modelName}}' => $this->name(),
+            '{{modelNamePlural}}' => $this->namePlural(),
             '{{variableName}}' => $this->variableName(),
             '{{variableNamePlural}}' => $this->variableNamePlural(),
             '{{userModelClassName}}' => $this->userModelClassName(),

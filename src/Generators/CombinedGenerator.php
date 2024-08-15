@@ -22,11 +22,13 @@ class CombinedGenerator
             RequestGenerator::class,
             ResourceGenerator::class,
             PermissionSeederGenerator::class,
+            
             ModuleServiceProviderGenerator::class,
             ComposerGenerator::class,
             RoutesGenerator::class,
 
             ControllerAuthorizationTestGenerator::class,
+            ControllerTestGenerator::class,
         ];
     }
 

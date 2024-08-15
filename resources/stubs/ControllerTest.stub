@@ -1,0 +1,109 @@
+<?php
+
+namespace {{baseNamespace}}\{{moduleName}}\Tests;
+
+use {{userModelClassName}};
+use {{baseNamespace}}\{{moduleName}}\Models\{{modelName}};
+use {{baseNamespace}}\{{moduleName}}\Factories\{{modelName}}Factory;
+use {{baseNamespace}}\{{moduleName}}\Seeders\{{modelName}}PermissionSeeder;
+use Database\Factories\UserFactory;
+use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Testing\Fluent\AssertableJson;
+use {{roleModelClassName}};
+use Symfony\Component\HttpFoundation\Response;
+use Tests\TestCase;
+
+class {{testClassName}} extends TestCase
+{
+    use RefreshDatabase;
+
+    public function admin(): User
+    {
+        (new {{modelName}}PermissionSeeder)->run();
+
+        $defaultGuardName = config('crudgenerator.default_guard_name');
+        $roleName = config('crudgenerator.default_role_name');
+        $role = Role::query()->firstOrCreate(['name' => $roleName], ['guard_name' => $defaultGuardName]);
+
+        return UserFactory::new()->create()->assignRole($role);
+    }
+
+    public function testItLists{{modelNamePlural}}(): void
+    {
+        $user = $this->admin();
+        {{modelName}}Factory::new()->count(20)->create();
+
+        $this
+            ->actingAs($user)
+            ->getJson('{{variableNamePlural}}?per_page=10')
+            ->assertStatus(Response::HTTP_OK)
+            ->assertJsonPath('data', function ($data) {
+                $this->assertCount(10, $data);
+
+                return true;
+            });
+    }
+
+    public function testItCreatesA{{modelName}}(): void
+    {
+        $user = $this->admin();
+        $payload = [];
+
+        $this
+            ->actingAs($user)
+            ->postJson('{{variableNamePlural}}', $payload)
+            ->assertStatus(Response::HTTP_CREATED)
+            ->assertJson(function (AssertableJson $json) use ($payload) {
+                $json->where('data.id', 1);
+                // $json->where('data.field', $payload['field']);
+            });
+
+        $this->assertDatabaseHas({{modelName}}::class, $payload);
+    }
+
+    public function testItShowsA{{modelName}}(): void
+    {
+        $user = $this->admin();
+        ${{variableName}} = {{modelName}}Factory::new()->create();
+
+        $this
+            ->actingAs($user)
+            ->getJson("{{variableNamePlural}}/{${{variableName}}->id}")
+            ->assertStatus(Response::HTTP_OK)
+            ->assertJson(function (AssertableJson $json) use (${{variableName}}) {
+                $json->where('data.id', ${{variableName}}->id);
+            });
+    }
+
+    public function testItUpdatesA{{modelName}}(): void
+    {
+        $user = $this->admin();
+        ${{variableName}} = {{modelName}}Factory::new()->create();
+
+        $payload = [];
+
+        $this
+            ->actingAs($user)
+            ->patchJson("{{variableNamePlural}}/{${{variableName}}->id}", $payload)
+            ->assertStatus(Response::HTTP_OK)
+            ->assertJson(function (AssertableJson $json) use ($payload) {
+                $json->where('data.id', 1);
+                // $json->where('data.field', $payload['field']);
+            });
+
+        $this->assertDatabaseHas({{modelName}}::class, $payload);
+    }
+
+    public function testItDeletesA{{modelName}}(): void
+    {
+        $user = $this->admin();
+        ${{variableName}} = {{modelName}}Factory::new()->create();
+
+        $this
+            ->actingAs($user)
+            ->deleteJson("{{variableNamePlural}}/{${{variableName}}->id}")
+            ->assertStatus(Response::HTTP_NO_CONTENT);
+
+        $this->assertDatabaseEmpty({{modelName}}::class);
+    }
+}
