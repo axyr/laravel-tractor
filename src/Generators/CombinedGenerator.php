@@ -24,6 +24,7 @@ class CombinedGenerator
             PermissionSeederGenerator::class,
             ModuleServiceProviderGenerator::class,
             ComposerGenerator::class,
+            RoutesGenerator::class,
         ];
     }
 
