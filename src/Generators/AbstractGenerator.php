@@ -16,7 +16,15 @@ abstract class AbstractGenerator
         }
     }
 
-    abstract public function directory(): string;
+    public static function new(string $name, ?string $module = null): static
+    {
+        return new ControllerGenerator($name, $module);
+    }
+
+    public function directory(): string
+    {
+        return '';
+    }
 
     public function stubName(): string
     {

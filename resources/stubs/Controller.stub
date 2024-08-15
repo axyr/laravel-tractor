@@ -2,7 +2,7 @@
 
 namespace {{namespace}};
 
-use App\Http\Controllers\Controller;
+use Illuminate\Routing\Controller;
 use {{baseNamespace}}\{{moduleName}}\Models\{{modelName}};
 use {{baseNamespace}}\{{moduleName}}\Repositories\{{modelName}}Repository;
 use {{baseNamespace}}\{{moduleName}}\Http\Requests\{{modelName}}Request;

@@ -4,11 +4,6 @@ namespace Axyr\CrudGenerator\Generators;
 
 class ComposerGenerator extends AbstractGenerator
 {
-    public function directory(): string
-    {
-        return '';
-    }
-
     public function path(): string
     {
         $parts = array_filter([$this->basePath(), $this->module(), 'composer.json']);

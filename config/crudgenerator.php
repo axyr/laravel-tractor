@@ -10,4 +10,9 @@ return [
     'composer' => [
         'vendor_prefix' => 'app',
     ],
+
+    'routes' => [
+        // Make sure this file is added to bootstrap/app.php
+        'default_file' => 'routes/web.php',
+    ],
 ];
