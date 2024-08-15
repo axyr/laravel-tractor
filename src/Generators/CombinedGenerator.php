@@ -25,6 +25,8 @@ class CombinedGenerator
             ModuleServiceProviderGenerator::class,
             ComposerGenerator::class,
             RoutesGenerator::class,
+
+            ControllerAuthorizationTestGenerator::class,
         ];
     }
 

@@ -1,0 +1,101 @@
+<?php
+
+namespace {{baseNamespace}}\{{moduleName}}\Tests;
+
+use {{userModelClassName}};
+use {{baseNamespace}}\{{moduleName}}\Factories\{{modelName}}Factory;
+use {{baseNamespace}}\{{moduleName}}\Models\{{modelName}};
+use {{baseNamespace}}\{{moduleName}}\Seeders\{{modelName}}PermissionSeeder;
+use Database\Factories\UserFactory;
+use Illuminate\Foundation\Testing\RefreshDatabase;
+use PHPUnit\Framework\Attributes\DataProvider;
+use {{roleModelClassName}};
+use Symfony\Component\HttpFoundation\Response;
+use Tests\TestCase;
+
+class {{testClassName}} extends TestCase
+{
+    use RefreshDatabase;
+
+    public function userWithRole(string $roleName, array $attributes = []): User
+    {
+        (new {{modelName}}PermissionSeeder)->run();
+
+        $defaultGuardName = config('crudgenerator.default_guard_name');
+        $role = Role::query()->firstOrCreate(['name' => $roleName], ['guard_name' => $defaultGuardName]);
+
+        return UserFactory::new()->create($attributes)->assignRole($role);
+    }
+
+    #[DataProvider('roleDataProvider')]
+    public function testList{{modelName}}Authorization(string $role, bool $allow): void
+    {
+        $user = $this->userWithRole($role);
+
+        $response = $this->actingAs($user)->get('{{variableNamePlural}}');
+
+        $this->assertEquals($allow, $user->can('viewAny', {{modelName}}::class));
+        $this->assertEquals($allow, $response->getStatusCode() !== Response::HTTP_FORBIDDEN, $response->getStatusCode());
+    }
+
+    #[DataProvider('roleDataProvider')]
+    public function testCreate{{modelName}}Authorization(string $role, bool $allow): void
+    {
+        $user = $this->userWithRole($role);
+
+        $response = $this->actingAs($user)->post('{{variableNamePlural}}');
+
+        $this->assertEquals($allow, $user->can('create', {{modelName}}::class));
+        $this->assertEquals($allow, $response->getStatusCode() !== Response::HTTP_FORBIDDEN, $response->getStatusCode());
+    }
+
+    #[DataProvider('roleDataProvider')]
+    public function testUpdate{{modelName}}Authorization(string $role, bool $allow): void
+    {
+        $user = $this->userWithRole($role);
+        ${{variableName}} = {{modelName}}Factory::new()->create();
+
+        $response = $this->actingAs($user)->patch("{{variableNamePlural}}/{${{variableName}}->id}");
+
+        $this->assertEquals($allow, $user->can('update', ${{variableName}}));
+        $this->assertEquals($allow, $response->getStatusCode() !== Response::HTTP_FORBIDDEN, $response->getStatusCode());
+    }
+
+    #[DataProvider('roleDataProvider')]
+    public function testShow{{modelName}}Authorization(string $role, bool $allow): void
+    {
+        $user = $this->userWithRole($role);
+        ${{variableName}} = {{modelName}}Factory::new()->create();
+
+        $response = $this->actingAs($user)->get("{{variableNamePlural}}/{${{variableName}}->id}");
+
+        $this->assertEquals($allow, $user->can('view', ${{variableName}}));
+        $this->assertEquals($allow, $response->getStatusCode() !== Response::HTTP_FORBIDDEN, $response->getStatusCode());
+    }
+
+    #[DataProvider('roleDataProvider')]
+    public function testDelete{{modelName}}Authorization(string $role, bool $allow): void
+    {
+        $user = $this->userWithRole($role);
+        ${{variableName}} = {{modelName}}Factory::new()->create();
+
+        $response = $this->actingAs($user)->delete("{{variableNamePlural}}/{${{variableName}}->id}");
+
+        $this->assertEquals($allow, $user->can('delete', ${{variableName}}));
+        $this->assertEquals($allow, $response->getStatusCode() !== Response::HTTP_FORBIDDEN, $response->getStatusCode());
+    }
+
+    public static function roleDataProvider(): array
+    {
+        return [
+            'default role with permissions is allowed' => [
+                'role' => 'admin',
+                'allow' => true,
+            ],
+            'custom role without permissions is not allowed' => [
+                'role' => 'not-allowed',
+                'allow' => false,
+            ],
+        ];
+    }
+}

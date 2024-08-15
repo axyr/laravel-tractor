@@ -23,7 +23,7 @@ class SrcDirectoryGeneratorTest extends GeneratorTestAbstract
                     'namespace App\Modules\Posts\Models;',
                 ],
                 'config' => [
-                    'crudgenerator.use_src_directory' => false,
+                    'crudgenerator.src_directory' => '',
                 ],
             ],
         ];

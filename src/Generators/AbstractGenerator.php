@@ -128,6 +128,11 @@ abstract class AbstractGenerator
         return config('auth.providers.users.model');
     }
 
+    public function roleModelClassName(): string
+    {
+        return config('permission.models.role');
+    }
+
     public function userModelShortName(): string
     {
         $reflect = new ReflectionClass($this->userModelClassName());
@@ -148,6 +153,7 @@ abstract class AbstractGenerator
             '{{variableNamePlural}}' => $this->variableNamePlural(),
             '{{userModelClassName}}' => $this->userModelClassName(),
             '{{userModelShortName}}' => $this->userModelShortName(),
+            '{{roleModelClassName}}' => $this->roleModelClassName(),
         ];
     }
 }
