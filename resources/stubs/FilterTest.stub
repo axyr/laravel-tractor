@@ -1,6 +1,6 @@
 <?php
 
-namespace {{namespace}};
+namespace {{baseNamespace}}\{{moduleName}}\Tests\Filters;
 
 use {{baseNamespace}}\{{moduleName}}\Factories\{{modelName}}Factory;
 use {{baseNamespace}}\{{moduleName}}\Filters\{{modelName}}Filter;

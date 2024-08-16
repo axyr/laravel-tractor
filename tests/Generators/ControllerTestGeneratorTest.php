@@ -19,6 +19,7 @@ class ControllerTestGeneratorTest extends GeneratorTestAbstract
                 'module' => 'Posts',
                 'expectedPath' => 'app-modules/Posts/tests/Http/Controllers/PostControllerTest.php',
                 'expectedStrings' => [
+                    'namespace App\Modules\Posts\Tests\Http\Controllers;',
                     'class PostControllerTest extends TestCase',
                     'use App\Modules\Posts\Factories\PostFactory;',
                     'use App\Modules\Posts\Models\Post;',

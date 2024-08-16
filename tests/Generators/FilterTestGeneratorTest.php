@@ -19,6 +19,7 @@ class FilterTestGeneratorTest extends GeneratorTestAbstract
                 'module' => 'Posts',
                 'expectedPath' => 'app-modules/Posts/tests/Filters/PostFilterTest.php',
                 'expectedStrings' => [
+                    'namespace App\Modules\Posts\Tests\Filters;',
                     'class PostFilterTest extends TestCase',
                     'use App\Modules\Posts\Factories\PostFactory;',
                     'use App\Modules\Posts\Filters\PostFilter;',
