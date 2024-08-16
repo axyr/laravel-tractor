@@ -47,8 +47,10 @@ class GenerateCrud extends Command
 
     public function createMigration(): void
     {
-        $command = sprintf('make:migration create_%s_table', strtolower(Str::plural($this->argument('name'))));
+        $name = sprintf('create_%s_table', strtolower(Str::plural($this->argument('name'))));
 
-        $this->call($command);
+        $this->call('make:migration', [
+            'name' => $name,
+        ]);
     }
 }
