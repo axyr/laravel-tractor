@@ -1,6 +1,6 @@
 <?php
 
-namespace Axyr\CrudGenerator\Filters\Contracts;
+namespace Axyr\Tractor\Filters\Contracts;
 
 use Illuminate\Database\Eloquent\Builder;
 

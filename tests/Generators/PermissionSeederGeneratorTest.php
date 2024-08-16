@@ -1,8 +1,8 @@
 <?php
 
-namespace Axyr\CrudGenerator\Tests\Generators;
+namespace Axyr\Tractor\Tests\Generators;
 
-use Axyr\CrudGenerator\Generators\PermissionSeederGenerator;
+use Axyr\Tractor\Generators\PermissionSeederGenerator;
 
 class PermissionSeederGeneratorTest extends GeneratorTestAbstract
 {

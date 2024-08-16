@@ -1,6 +1,6 @@
 <?php
 
-namespace Axyr\CrudGenerator\Filters\Exceptions;
+namespace Axyr\Tractor\Filters\Exceptions;
 
 use Exception;
 

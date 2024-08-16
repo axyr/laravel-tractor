@@ -1,9 +1,9 @@
 <?php
 
-namespace Axyr\CrudGenerator\Filters;
+namespace Axyr\Tractor\Filters;
 
-use Axyr\CrudGenerator\Filters\Contracts\Filters;
-use Axyr\CrudGenerator\Filters\Traits\ExtendsFilters;
+use Axyr\Tractor\Filters\Contracts\Filters;
+use Axyr\Tractor\Filters\Traits\ExtendsFilters;
 use Illuminate\Contracts\Auth\Authenticatable;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Arr;

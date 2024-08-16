@@ -1,9 +1,9 @@
 <?php
 
-namespace Axyr\CrudGenerator\Tests\Generators;
+namespace Axyr\Tractor\Tests\Generators;
 
-use Axyr\CrudGenerator\Generators\CombinedGenerator;
-use Axyr\CrudGenerator\Tests\TestCase;
+use Axyr\Tractor\Generators\CombinedGenerator;
+use Axyr\Tractor\Tests\TestCase;
 
 class CombinedGeneratorTest extends TestCase
 {

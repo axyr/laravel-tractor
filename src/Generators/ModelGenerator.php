@@ -1,6 +1,6 @@
 <?php
 
-namespace Axyr\CrudGenerator\Generators;
+namespace Axyr\Tractor\Generators;
 
 class ModelGenerator extends AbstractGenerator
 {

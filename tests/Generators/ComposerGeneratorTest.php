@@ -1,8 +1,8 @@
 <?php
 
-namespace Axyr\CrudGenerator\Tests\Generators;
+namespace Axyr\Tractor\Tests\Generators;
 
-use Axyr\CrudGenerator\Generators\ComposerGenerator;
+use Axyr\Tractor\Generators\ComposerGenerator;
 
 class ComposerGeneratorTest extends GeneratorTestAbstract
 {

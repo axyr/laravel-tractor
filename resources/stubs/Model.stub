@@ -2,7 +2,7 @@
 
 namespace {{namespace}};
 
-use Axyr\CrudGenerator\Filters\Traits\FiltersRecords;
+use Axyr\Tractor\Filters\Traits\FiltersRecords;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Carbon;
 

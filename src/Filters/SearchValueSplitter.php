@@ -1,6 +1,6 @@
 <?php
 
-namespace Axyr\CrudGenerator\Filters;
+namespace Axyr\Tractor\Filters;
 
 class SearchValueSplitter
 {

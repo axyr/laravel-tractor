@@ -1,10 +1,10 @@
 <?php
 
-namespace Axyr\CrudGenerator\Filters\Traits;
+namespace Axyr\Tractor\Filters\Traits;
 
-use Axyr\CrudGenerator\Filters\Contracts\SortableInterface;
-use Axyr\CrudGenerator\Filters\Enums\SortDirection;
-use Axyr\CrudGenerator\Filters\Exceptions\DoesNotImplementSortableInterfaceException;
+use Axyr\Tractor\Filters\Contracts\SortableInterface;
+use Axyr\Tractor\Filters\Enums\SortDirection;
+use Axyr\Tractor\Filters\Exceptions\DoesNotImplementSortableInterfaceException;
 use Illuminate\Support\Str;
 
 trait ExtendsFilters
@@ -31,7 +31,7 @@ trait ExtendsFilters
         if ( ! $this instanceof SortableInterface) {
             $class = get_class($this);
             throw new DoesNotImplementSortableInterfaceException(
-                "{$class} does not implements \Axyr\CrudGenerator\Filters\SortableInterface"
+                "{$class} does not implements \Axyr\Tractor\Filters\SortableInterface"
             );
         }
     }

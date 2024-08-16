@@ -4,7 +4,7 @@ namespace {{namespace}};
 
 use {{baseNamespace}}\{{moduleName}}\Models\{{modelName}};
 use {{baseNamespace}}\{{moduleName}}\Filters\{{modelName}}Filter;
-use Axyr\CrudGenerator\Repositories\AbstractRepository;
+use Axyr\Tractor\Repositories\AbstractRepository;
 use Illuminate\Database\Eloquent\Builder;
 
 class {{repositoryName}} extends AbstractRepository

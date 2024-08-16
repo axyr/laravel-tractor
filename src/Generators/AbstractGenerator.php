@@ -1,6 +1,6 @@
 <?php
 
-namespace Axyr\CrudGenerator\Generators;
+namespace Axyr\Tractor\Generators;
 
 use Illuminate\Support\Str;
 use ReflectionClass;
@@ -67,22 +67,22 @@ abstract class AbstractGenerator
 
     public function basePath(): string
     {
-        return config('crudgenerator.base_path');
+        return config('tractor.base_path');
     }
 
     public function baseNamespace(): string
     {
-        return config('crudgenerator.base_namespace');
+        return config('tractor.base_namespace');
     }
 
     public function srcDirectory(): ?string
     {
-        return config('crudgenerator.src_directory');
+        return config('tractor.src_directory');
     }
 
     public function testDirectory(): ?string
     {
-        return config('crudgenerator.test_directory');
+        return config('tractor.test_directory');
     }
 
     public function fileSuffix(): string

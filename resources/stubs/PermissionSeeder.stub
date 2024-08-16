@@ -22,8 +22,8 @@ class {{seederName}} extends Seeder
 
     private function createDefaultRole(): void
     {
-        $defaultRoleName = config('crudgenerator.default_role_name');
-        $defaultGuardName = config('crudgenerator.default_guard_name');
+        $defaultRoleName = config('tractor.default_role_name');
+        $defaultGuardName = config('tractor.default_guard_name');
 
         $this->defaultRole = Role::query()->firstOrCreate(['name' => $defaultRoleName], ['guard_name' => $defaultGuardName]);
 

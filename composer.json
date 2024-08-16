@@ -1,23 +1,25 @@
 {
-    "name": "axyr/laravel-crud-generator",
+    "name": "axyr/laravel-tractor",
     "description": "Opiniated Laravel CRUD generator for a Module/Repository/Filter based CRUD setup.",
     "type": "library",
-    "autoload": {
-        "psr-4": {
-            "Axyr\\CrudGenerator\\": "src/"
-        }
-    },
-    "autoload-dev": {
-        "psr-4": {
-            "Axyr\\CrudGenerator\\Tests\\": "tests/"
-        }
-    },
+    "keywords": ["laravel", "module", "crud", "api", "json", "boilerplate", "scaffolder"],
+    "license": "MIT",
     "authors": [
         {
             "name": "Martijn van Nieuwenhoven",
             "email": "info@axyrmedia.nl"
         }
     ],
+    "autoload": {
+        "psr-4": {
+            "Axyr\\Tractor\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Axyr\\Tractor\\Tests\\": "tests/"
+        }
+    },
     "require": {
         "php": "^8.2",
         "laravel/framework": "^11.0",
@@ -31,7 +33,7 @@
     "extra": {
         "laravel": {
             "providers": [
-                "Axyr\\CrudGenerator\\CrudGeneratorServiceProvider"
+                "Axyr\\Tractor\\TractorServiceProvider"
             ]
         }
     },

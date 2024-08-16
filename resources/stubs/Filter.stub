@@ -2,8 +2,8 @@
 
 namespace {{namespace}};
 
-use Axyr\CrudGenerator\Filters\ArrayFilters;
-use Axyr\CrudGenerator\Filters\Contracts\SortableInterface;
+use Axyr\Tractor\Filters\ArrayFilters;
+use Axyr\Tractor\Filters\Contracts\SortableInterface;
 
 class {{filterName}} extends ArrayFilters implements SortableInterface
 {

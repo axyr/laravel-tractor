@@ -1,8 +1,8 @@
 <?php
 
-namespace Axyr\CrudGenerator\Tests\Generators;
+namespace Axyr\Tractor\Tests\Generators;
 
-use Axyr\CrudGenerator\Generators\PolicyGenerator;
+use Axyr\Tractor\Generators\PolicyGenerator;
 
 class PolicyGeneratorTest extends GeneratorTestAbstract
 {

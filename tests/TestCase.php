@@ -1,8 +1,8 @@
 <?php
 
-namespace Axyr\CrudGenerator\Tests;
+namespace Axyr\Tractor\Tests;
 
-use Axyr\CrudGenerator\CrudGeneratorServiceProvider;
+use Axyr\Tractor\TractorServiceProvider;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\File;
 use Orchestra\Testbench\Concerns\WithWorkbench;
@@ -20,7 +20,7 @@ class TestCase extends \Orchestra\Testbench\TestCase
     {
         parent::setUp();
 
-        File::deleteDirectory(base_path(config('crudgenerator.base_path')));
+        File::deleteDirectory(base_path(config('tractor.base_path')));
 
         Carbon::setTestNow($this->now = now());
     }
@@ -29,7 +29,7 @@ class TestCase extends \Orchestra\Testbench\TestCase
     {
         return [
             PermissionServiceProvider::class,
-            CrudGeneratorServiceProvider::class,
+            TractorServiceProvider::class,
         ];
     }
 }

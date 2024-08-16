@@ -1,8 +1,8 @@
 <?php
 
-namespace Axyr\CrudGenerator\Tests\Generators;
+namespace Axyr\Tractor\Tests\Generators;
 
-use Axyr\CrudGenerator\Generators\ControllerTestGenerator;
+use Axyr\Tractor\Generators\ControllerTestGenerator;
 
 class ControllerTestGeneratorTest extends GeneratorTestAbstract
 {

@@ -1,8 +1,8 @@
 <?php
 
-namespace Axyr\CrudGenerator\Tests\Generators;
+namespace Axyr\Tractor\Tests\Generators;
 
-use Axyr\CrudGenerator\Generators\RoutesGenerator;
+use Axyr\Tractor\Generators\RoutesGenerator;
 
 class RoutesGeneratorTest extends GeneratorTestAbstract
 {
@@ -44,7 +44,6 @@ class RoutesGeneratorTest extends GeneratorTestAbstract
             "Route::apiResource('videos', \App\Modules\Posts\Http\Controllers\VideoController::class);",
         ]);
     }
-
 
     public function testItAppendsANewRouteOnlyOnce(): void
     {

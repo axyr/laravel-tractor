@@ -1,8 +1,8 @@
 <?php
 
-namespace Axyr\CrudGenerator\Tests\Generators;
+namespace Axyr\Tractor\Tests\Generators;
 
-use Axyr\CrudGenerator\Generators\ResourceGenerator;
+use Axyr\Tractor\Generators\ResourceGenerator;
 
 class ResourceGeneratorTest extends GeneratorTestAbstract
 {

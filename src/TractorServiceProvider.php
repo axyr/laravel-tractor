@@ -1,13 +1,13 @@
 <?php
 
-namespace Axyr\CrudGenerator;
+namespace Axyr\Tractor;
 
-use Axyr\CrudGenerator\Commands\GenerateCrud;
+use Axyr\Tractor\Commands\TractorGenerate;
 use Illuminate\Filesystem\Filesystem;
 use Illuminate\Foundation\PackageManifest as BasePackageManifest;
 use Illuminate\Support\ServiceProvider;
 
-class CrudGeneratorServiceProvider extends ServiceProvider
+class TractorServiceProvider extends ServiceProvider
 {
     public function register(): void
     {
@@ -22,17 +22,17 @@ class CrudGeneratorServiceProvider extends ServiceProvider
 
     protected function registerConfig(): void
     {
-        $file = __DIR__ . '/../config/crudgenerator.php';
+        $file = __DIR__ . '/../config/tractor.php';
 
-        $this->mergeConfigFrom($file, 'crudgenerator');
-        $this->publishes([$file => config_path('crudgenerator.php')]);
+        $this->mergeConfigFrom($file, 'tractor');
+        $this->publishes([$file => config_path('tractor.php')]);
     }
 
     protected function bootCommands(): void
     {
         if ($this->app->runningInConsole()) {
             $this->commands([
-                GenerateCrud::class,
+                TractorGenerate::class,
             ]);
         }
     }

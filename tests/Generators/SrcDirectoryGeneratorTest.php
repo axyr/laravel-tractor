@@ -1,8 +1,8 @@
 <?php
 
-namespace Axyr\CrudGenerator\Tests\Generators;
+namespace Axyr\Tractor\Tests\Generators;
 
-use Axyr\CrudGenerator\Generators\ModelGenerator;
+use Axyr\Tractor\Generators\ModelGenerator;
 
 class SrcDirectoryGeneratorTest extends GeneratorTestAbstract
 {
@@ -23,7 +23,7 @@ class SrcDirectoryGeneratorTest extends GeneratorTestAbstract
                     'namespace App\Modules\Posts\Models;',
                 ],
                 'config' => [
-                    'crudgenerator.src_directory' => '',
+                    'tractor.src_directory' => '',
                 ],
             ],
         ];

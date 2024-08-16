@@ -1,8 +1,8 @@
 <?php
 
-namespace Axyr\CrudGenerator\Repositories;
+namespace Axyr\Tractor\Repositories;
 
-use Axyr\CrudGenerator\Filters\Contracts\Filters;
+use Axyr\Tractor\Filters\Contracts\Filters;
 use Illuminate\Contracts\Auth\Authenticatable;
 use Illuminate\Contracts\Pagination\LengthAwarePaginator;
 use Illuminate\Database\Eloquent\Builder;

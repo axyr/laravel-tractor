@@ -1,6 +1,6 @@
 <?php
 
-namespace Axyr\CrudGenerator;
+namespace Axyr\Tractor;
 
 use Illuminate\Foundation\PackageManifest as BasePackageManifest;
 use Illuminate\Support\Arr;

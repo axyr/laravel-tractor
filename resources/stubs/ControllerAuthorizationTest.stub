@@ -21,7 +21,7 @@ class {{testClassName}} extends TestCase
     {
         (new {{modelName}}PermissionSeeder)->run();
 
-        $defaultGuardName = config('crudgenerator.default_guard_name');
+        $defaultGuardName = config('tractor.default_guard_name');
         $role = Role::query()->firstOrCreate(['name' => $roleName], ['guard_name' => $defaultGuardName]);
 
         return UserFactory::new()->create($attributes)->assignRole($role);

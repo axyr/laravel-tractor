@@ -1,6 +1,6 @@
 <?php
 
-namespace Axyr\CrudGenerator\Generators;
+namespace Axyr\Tractor\Generators;
 
 class CombinedGenerator
 {
@@ -36,7 +36,7 @@ class CombinedGenerator
     public function generate(): void
     {
         foreach ($this->generators() as $generatorClass) {
-            /** @var \Axyr\CrudGenerator\Generators\AbstractGenerator $generator */
+            /** @var \Axyr\Tractor\Generators\AbstractGenerator $generator */
             $generator = new $generatorClass($this->name, $this->module);
             $generator->write();
             $this->generatedFiles[] = $generator->path();

@@ -1,8 +1,8 @@
 <?php
 
-namespace Axyr\CrudGenerator\Filters\Traits;
+namespace Axyr\Tractor\Filters\Traits;
 
-use Axyr\CrudGenerator\Filters\Contracts\Filters;
+use Axyr\Tractor\Filters\Contracts\Filters;
 use Illuminate\Database\Eloquent\Builder;
 
 /**

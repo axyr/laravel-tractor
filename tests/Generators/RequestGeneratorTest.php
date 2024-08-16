@@ -1,8 +1,8 @@
 <?php
 
-namespace Axyr\CrudGenerator\Tests\Generators;
+namespace Axyr\Tractor\Tests\Generators;
 
-use Axyr\CrudGenerator\Generators\RequestGenerator;
+use Axyr\Tractor\Generators\RequestGenerator;
 
 class RequestGeneratorTest extends GeneratorTestAbstract
 {

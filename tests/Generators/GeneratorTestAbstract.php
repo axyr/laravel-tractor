@@ -1,9 +1,9 @@
 <?php
 
-namespace Axyr\CrudGenerator\Tests\Generators;
+namespace Axyr\Tractor\Tests\Generators;
 
-use Axyr\CrudGenerator\Generators\AbstractGenerator;
-use Axyr\CrudGenerator\Tests\TestCase;
+use Axyr\Tractor\Generators\AbstractGenerator;
+use Axyr\Tractor\Tests\TestCase;
 use PHPUnit\Framework\Attributes\DataProvider;
 
 abstract class GeneratorTestAbstract extends TestCase

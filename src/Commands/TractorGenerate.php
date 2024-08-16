@@ -1,21 +1,21 @@
 <?php
 
-namespace Axyr\CrudGenerator\Commands;
+namespace Axyr\Tractor\Commands;
 
-use Axyr\CrudGenerator\Generators\CombinedGenerator;
+use Axyr\Tractor\Generators\CombinedGenerator;
 use Illuminate\Console\Command;
 use Illuminate\Support\Str;
 
-class GenerateCrud extends Command
+class TractorGenerate extends Command
 {
-    protected $signature = 'crud:generate
+    protected $signature = 'tractor:generate
         { name : The Model to generate }
         { --a|all : Generate a migration, permission seeder, factory, policy, resource controller, form request, repository and filter classes for the model }
         { --m|migration : Create a new migration file for the model }
         { --module= : The Module name to generate the Model in. Defaults to plural form of the name argument }
     ';
 
-    protected $description = 'Generate a set of classes to manage a resource crud.';
+    protected $description = 'Generate a module structure for a restfull resource based json api module.';
 
     public function handle(): void
     {

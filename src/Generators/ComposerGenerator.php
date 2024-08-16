@@ -1,6 +1,6 @@
 <?php
 
-namespace Axyr\CrudGenerator\Generators;
+namespace Axyr\Tractor\Generators;
 
 class ComposerGenerator extends AbstractGenerator
 {
@@ -13,7 +13,7 @@ class ComposerGenerator extends AbstractGenerator
 
     public function composerName(): string
     {
-        return config('crudgenerator.composer.vendor_prefix') . '/' . strtolower($this->module());
+        return config('tractor.composer.vendor_prefix') . '/' . strtolower($this->module());
     }
 
     public function autoloadPath(): string

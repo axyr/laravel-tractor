@@ -1,8 +1,8 @@
 <?php
 
-namespace Axyr\CrudGenerator\Tests\Generators;
+namespace Axyr\Tractor\Tests\Generators;
 
-use Axyr\CrudGenerator\Generators\ModuleServiceProviderGenerator;
+use Axyr\Tractor\Generators\ModuleServiceProviderGenerator;
 
 class ModuleServiceProviderGeneratorTest extends GeneratorTestAbstract
 {
@@ -36,7 +36,7 @@ class ModuleServiceProviderGeneratorTest extends GeneratorTestAbstract
         $this->assertTrue($generator->shouldWriteFile($expectedFile));
 
         $generator->write();
-        
+
         $this->assertFalse($generator->shouldWriteFile($expectedFile));
     }
 }

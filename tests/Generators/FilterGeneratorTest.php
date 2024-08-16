@@ -1,8 +1,8 @@
 <?php
 
-namespace Axyr\CrudGenerator\Tests\Generators;
+namespace Axyr\Tractor\Tests\Generators;
 
-use Axyr\CrudGenerator\Generators\FilterGenerator;
+use Axyr\Tractor\Generators\FilterGenerator;
 
 class FilterGeneratorTest extends GeneratorTestAbstract
 {

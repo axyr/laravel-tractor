@@ -1,6 +1,6 @@
 <?php
 
-namespace Axyr\CrudGenerator\Filters\Enums;
+namespace Axyr\Tractor\Filters\Enums;
 
 enum SortDirection: string
 {
