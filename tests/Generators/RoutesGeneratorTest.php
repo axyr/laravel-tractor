@@ -28,8 +28,6 @@ class RoutesGeneratorTest extends GeneratorTestAbstract
 
     public function testItAppendsANewRouteToAnExistingRoutesFile(): void
     {
-        $file = base_path('app-modules/Posts/routes.php');
-
         $generator = $this->generator('Post', 'Posts');
         $generator->write();
 
@@ -39,11 +37,23 @@ class RoutesGeneratorTest extends GeneratorTestAbstract
         $generator = $this->generator('Video', 'Posts');
         $generator->write();
 
-        $this->assertFileContainsStrings($file, [
+        $this->assertFileContainsStrings($generator->fullPath(), [
             'use Illuminate\Support\Facades\Route;',
             "Route::apiResource('posts', \App\Modules\Posts\Http\Controllers\PostController::class);",
             "Route::apiResource('comments', \App\Modules\Posts\Http\Controllers\CommentController::class);",
             "Route::apiResource('videos', \App\Modules\Posts\Http\Controllers\VideoController::class);",
         ]);
+    }
+
+
+    public function testItAppendsANewRouteOnlyOnce(): void
+    {
+        $generator = $this->generator('Comment', 'Posts');
+
+        $generator->write();
+        $generator->write();
+        $generator->write();
+
+       $this->assertEquals(1, substr_count(file_get_contents($generator->fullPath()), "Route::apiResource('comments'"));
     }
 }

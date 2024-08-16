@@ -147,7 +147,6 @@ abstract class AbstractGenerator
         );
     }
 
-
     public function getStubContent(): string
     {
         return $this->getStub($this->stubName());

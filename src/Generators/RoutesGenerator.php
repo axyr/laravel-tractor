@@ -41,6 +41,10 @@ class RoutesGenerator extends AbstractGenerator
         $content = $this->getStubContent();
         $route = $this->applyReplacements($this->route());
 
+        if(str_contains($content, $route)) {
+            return $content;
+        }
+
         return Str::replaceLast(';', ";\n" . $route, $content);
     }
 
