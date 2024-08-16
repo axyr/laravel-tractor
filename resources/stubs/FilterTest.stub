@@ -1,0 +1,26 @@
+<?php
+
+namespace {{namespace}};
+
+use {{baseNamespace}}\{{moduleName}}\Factories\{{modelName}}Factory;
+use {{baseNamespace}}\{{moduleName}}\Filters\{{modelName}}Filter;
+use {{baseNamespace}}\{{moduleName}}\Models\{{modelName}};
+use Illuminate\Foundation\Testing\RefreshDatabase;
+use Tests\TestCase;
+
+class {{testClassName}} extends TestCase
+{
+    use RefreshDatabase;
+
+    public function testIdFilter(): void
+    {
+        $included{{modelName}} = {{modelName}}Factory::new()->create(['id' => 123]);
+        {{modelName}}Factory::new()->create();
+
+        $filter = new {{modelName}}Filter(['id' => $included{{modelName}}->id]);
+        ${{variableNamePlural}} = {{modelName}}::filterBy($filter)->get();
+
+        $this->assertCount(1, ${{variableNamePlural}});
+        $this->assertEquals(123, ${{variableNamePlural}}->first()->id);
+    }
+}

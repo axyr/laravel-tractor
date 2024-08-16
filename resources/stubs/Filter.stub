@@ -14,8 +14,8 @@ class {{filterName}} extends ArrayFilters implements SortableInterface
         ];
     }
 
-    public function q(string $search): void
+    public function id(int $id): void
     {
-        $this->query->where('id', '=', $search);
+        $this->query->where('id', $id);
     }
 }

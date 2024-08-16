@@ -28,6 +28,7 @@ class CombinedGeneratorTest extends TestCase
             'app-modules/Posts/routes.php',
             'app-modules/Posts/tests/Http/Controllers/CommentControllerAuthorizationTest.php',
             'app-modules/Posts/tests/Http/Controllers/CommentControllerTest.php',
+            'app-modules/Posts/tests/Filters/CommentFilterTest.php',
         ];
 
         $this->assertEquals($expectedGeneratedFiles, $generator->generatedFiles());
