@@ -3,6 +3,8 @@
 namespace Axyr\CrudGenerator;
 
 use Axyr\CrudGenerator\Commands\GenerateCrud;
+use Illuminate\Filesystem\Filesystem;
+use Illuminate\Foundation\PackageManifest as BasePackageManifest;
 use Illuminate\Support\ServiceProvider;
 
 class CrudGeneratorServiceProvider extends ServiceProvider
@@ -10,6 +12,7 @@ class CrudGeneratorServiceProvider extends ServiceProvider
     public function register(): void
     {
         $this->registerConfig();
+        $this->overridePackageManifest();
     }
 
     public function boot(): void
@@ -32,5 +35,17 @@ class CrudGeneratorServiceProvider extends ServiceProvider
                 GenerateCrud::class,
             ]);
         }
+    }
+
+    public function overridePackageManifest(): void
+    {
+        $this->app->instance(
+            BasePackageManifest::class,
+            new PackageManifest(
+                new Filesystem(),
+                $this->app->basePath(),
+                $this->app->getCachedPackagesPath()
+            )
+        );
     }
 }

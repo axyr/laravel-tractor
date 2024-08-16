@@ -18,7 +18,7 @@ abstract class AbstractGenerator
 
     public static function new(string $name, ?string $module = null): static
     {
-        return new ControllerGenerator($name, $module);
+        return new static($name, $module);
     }
 
     public function directory(): string
@@ -101,6 +101,11 @@ abstract class AbstractGenerator
         $parts = array_filter([$this->baseNamespace(), $this->module(), $directory]);
 
         return implode('\\', $parts);
+    }
+
+    public function fullyQyalifiedClassName(): string
+    {
+        return $this->namespace() . '\\' . $this->className();
     }
 
     public function write(): void

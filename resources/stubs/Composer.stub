@@ -10,5 +10,12 @@
         "psr-4": {
             "{{autoloadPath}}\\Tests\\": "{{testDirectory}}/"
         }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "{{serviceProviderFullyQyalifiedClassName}}"
+            ]
+        }
     }
 }

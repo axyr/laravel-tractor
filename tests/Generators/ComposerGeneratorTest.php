@@ -22,6 +22,7 @@ class ComposerGeneratorTest extends GeneratorTestAbstract
                     '"name": "app/posts"',
                     '"App\\\\Modules\\\\Posts\\\\": "src/"',
                     '"App\\\\Modules\\\\Posts\\\\Tests\\\\": "tests/"',
+                    '"App\\\\Modules\\\\Posts\\\\PostServiceProvider"',
                 ],
             ],
         ];

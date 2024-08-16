@@ -20,8 +20,8 @@ class RoutesGenerator extends AbstractGenerator
     {
         return array_merge(parent::replacements(), [
             '{{routeName}}' => $this->variableNamePlural(),
-            '{{controllerName}}' => $this->controllerGenerator()->className(),
-            '{{controllerNamespace}}' => $this->controllerGenerator()->namespace(),
+            '{{controllerFullyQyalifiedClassName}}' => $this->controllerGenerator()->fullyQyalifiedClassName(),
+            '{{controllerClassName}}' => $this->controllerGenerator()->className(),
         ]);
     }
 }

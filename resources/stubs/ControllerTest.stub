@@ -1,6 +1,6 @@
 <?php
 
-namespace {{baseNamespace}}\{{moduleName}}\Tests;
+namespace {{baseNamespace}}\{{moduleName}}\Tests\Http\Controllers;
 
 use {{userModelClassName}};
 use {{baseNamespace}}\{{moduleName}}\Models\{{modelName}};
