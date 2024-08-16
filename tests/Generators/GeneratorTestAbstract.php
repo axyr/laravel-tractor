@@ -21,17 +21,22 @@ abstract class GeneratorTestAbstract extends TestCase
 
         $this->assertFileExists($expectedFile = base_path($expectedPath));
 
-        $content = file_get_contents($expectedFile);
-
-        foreach ($expectedStrings as $expectedString) {
-            $this->assertStringContainsString($expectedString, $content);
-        }
+        $this->assertFileContainsStrings($expectedFile, $expectedStrings);
     }
 
     public function generator(string $name, string $module): AbstractGenerator
     {
         $generatorClassName = $this->generatorClassName();
         return new $generatorClassName($name, $module ?: null);
+    }
+
+    public function assertFileContainsStrings(string $file, array $strings): void
+    {
+        $content = file_get_contents($file);
+
+        foreach ($strings as $string) {
+            $this->assertStringContainsString($string, $content);
+        }
     }
 
     abstract public function generatorClassName(): string;

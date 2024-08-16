@@ -2,6 +2,8 @@
 
 namespace Axyr\CrudGenerator\Generators;
 
+use Illuminate\Support\Str;
+
 class RoutesGenerator extends AbstractGenerator
 {
     public function path(): string
@@ -23,5 +25,27 @@ class RoutesGenerator extends AbstractGenerator
             '{{controllerFullyQyalifiedClassName}}' => $this->controllerGenerator()->fullyQyalifiedClassName(),
             '{{controllerClassName}}' => $this->controllerGenerator()->className(),
         ]);
+    }
+
+    public function getStubContent(): string
+    {
+        if (file_exists($this->fullPath())) {
+            return file_get_contents($this->fullPath());
+        }
+
+        return parent::getStubContent();
+    }
+
+    public function content(): string
+    {
+        $content = $this->getStubContent();
+        $route = $this->applyReplacements($this->route());
+
+        return Str::replaceLast(';', ";\n" . $route, $content);
+    }
+
+    public function route(): string
+    {
+        return "Route::apiResource('{{routeName}}', \{{controllerFullyQyalifiedClassName}}::class);";
     }
 }

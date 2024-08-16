@@ -97,6 +97,11 @@ abstract class AbstractGenerator
         return sprintf('%s%s', implode('/', $parts), $this->fileSuffix());
     }
 
+    public function fullPath(): string
+    {
+        return base_path($this->path());
+    }
+
     public function namespace(): string
     {
         $directory = str_replace('/', '\\', $this->directory());
@@ -112,7 +117,7 @@ abstract class AbstractGenerator
 
     public function write(): void
     {
-        $file = base_path($this->path());
+        $file = $this->fullPath();
 
         if ( ! file_exists($dir = pathinfo($file, PATHINFO_DIRNAME))) {
             mkdir($dir, 0777, true);
@@ -130,11 +135,22 @@ abstract class AbstractGenerator
 
     public function content(): string
     {
+        return $this->applyReplacements($this->getStubContent());
+    }
+
+    public function applyReplacements(string $content): string
+    {
         return str_replace(
             array_keys($this->replacements()),
             array_values($this->replacements()),
-            $this->getStub($this->stubName())
+            $content
         );
+    }
+
+
+    public function getStubContent(): string
+    {
+        return $this->getStub($this->stubName());
     }
 
     public function getStub(string $name): string

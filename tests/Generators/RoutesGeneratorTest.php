@@ -19,10 +19,31 @@ class RoutesGeneratorTest extends GeneratorTestAbstract
                 'module' => 'Posts',
                 'expectedPath' => 'app-modules/Posts/routes.php',
                 'expectedStrings' => [
-                    'use App\Modules\Posts\Http\Controllers\CommentController;',
-                    "Route::apiResource('comments', CommentController::class);",
+                    'use Illuminate\Support\Facades\Route;',
+                    "Route::apiResource('comments', \App\Modules\Posts\Http\Controllers\CommentController::class);",
                 ],
             ],
         ];
+    }
+
+    public function testItAppendsANewRouteToAnExistingRoutesFile(): void
+    {
+        $file = base_path('app-modules/Posts/routes.php');
+
+        $generator = $this->generator('Post', 'Posts');
+        $generator->write();
+
+        $generator = $this->generator('Comment', 'Posts');
+        $generator->write();
+
+        $generator = $this->generator('Video', 'Posts');
+        $generator->write();
+
+        $this->assertFileContainsStrings($file, [
+            'use Illuminate\Support\Facades\Route;',
+            "Route::apiResource('posts', \App\Modules\Posts\Http\Controllers\PostController::class);",
+            "Route::apiResource('comments', \App\Modules\Posts\Http\Controllers\CommentController::class);",
+            "Route::apiResource('videos', \App\Modules\Posts\Http\Controllers\VideoController::class);",
+        ]);
     }
 }
