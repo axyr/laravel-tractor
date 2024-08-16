@@ -24,4 +24,19 @@ class ModuleServiceProviderGeneratorTest extends GeneratorTestAbstract
             ],
         ];
     }
+
+    public function testItDoesNotOverwriteAnExistingFile(): void
+    {
+        $expectedFile = base_path('app-modules/Posts/src/PostServiceProvider.php');
+
+        // a Module can contain multiple CRUDs
+        // we always only want to create a ModuleServiceProvider once
+        $generator = $this->generator('Post', 'Posts');
+
+        $this->assertTrue($generator->shouldWriteFile($expectedFile));
+
+        $generator->write();
+        
+        $this->assertFalse($generator->shouldWriteFile($expectedFile));
+    }
 }

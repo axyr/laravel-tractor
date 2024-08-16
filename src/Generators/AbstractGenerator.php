@@ -7,6 +7,8 @@ use ReflectionClass;
 
 abstract class AbstractGenerator
 {
+    public bool $overwriteExistingFile = true;
+
     public function __construct(protected string $name, protected ?string $module = null)
     {
         $this->name = Str::singular($this->name);
@@ -116,7 +118,14 @@ abstract class AbstractGenerator
             mkdir($dir, 0777, true);
         }
 
-        file_put_contents($file, $this->content());
+        if ($this->shouldWriteFile($file)) {
+            file_put_contents($file, $this->content());
+        }
+    }
+
+    public function shouldWriteFile(string $file): bool
+    {
+        return $this->overwriteExistingFile || ! file_exists($file);
     }
 
     public function content(): string

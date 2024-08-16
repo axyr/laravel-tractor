@@ -14,7 +14,7 @@ abstract class GeneratorTestAbstract extends TestCase
         foreach ($config as $key => $value) {
             config()->set($key, $value);
         }
-        
+
         $generator = $this->generator($name, $module);
 
         $generator->write();
@@ -28,7 +28,7 @@ abstract class GeneratorTestAbstract extends TestCase
         }
     }
 
-    private function generator(string $name, string $module): AbstractGenerator
+    public function generator(string $name, string $module): AbstractGenerator
     {
         $generatorClassName = $this->generatorClassName();
         return new $generatorClassName($name, $module ?: null);
