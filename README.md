@@ -317,10 +317,6 @@ class PostControllerAuthorizationTest extends TestCase
 
 ```
 
-## Documentation
-
-[https://axyr.gitbook.io/laravel-tractor](https://axyr.gitbook.io/laravel-tractor)
-
 ## Quick start
 
 
@@ -343,7 +339,3 @@ php artisan test
 ```
 
 From here, you can start extending the module with your specific business cases.
-
-For further information and customisation, visit our documentation page:
-
-[https://axyr.gitbook.io/laravel-tractor](https://axyr.gitbook.io/laravel-tractor)
