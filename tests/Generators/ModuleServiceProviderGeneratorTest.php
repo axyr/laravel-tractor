@@ -20,7 +20,25 @@ class ModuleServiceProviderGeneratorTest extends GeneratorTestAbstract
                 'expectedPath' => 'app-modules/Posts/src/PostServiceProvider.php',
                 'expectedStrings' => [
                     'class PostServiceProvider extends ServiceProvider',
+                    "Route::middleware('web')->prefix('abc')->group(function ()"
                 ],
+                'config' =>[
+                    'tractor.route_middleware' => 'web',
+                    'tractor.route_prefix' => 'abc'
+                ]
+            ],
+
+            [
+                'name' => 'Comment',
+                'module' => 'Posts',
+                'expectedPath' => 'app-modules/Posts/src/PostServiceProvider.php',
+                'expectedStrings' => [
+                    "Route::group(function ()"
+                ],
+                'config' =>[
+                    'tractor.route_middleware' => '',
+                    'tractor.route_prefix' => ''
+                ]
             ],
         ];
     }

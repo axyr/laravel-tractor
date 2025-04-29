@@ -70,6 +70,39 @@ abstract class AbstractGenerator
         return config('tractor.base_path');
     }
 
+    public function routeMiddleware(): string
+    {
+        return config('tractor.route_middleware');
+    }
+
+    public function routePrefix(): string
+    {
+        return config('tractor.route_prefix');
+    }
+
+    public function urlPath(): string
+    {
+        return implode('/', array_filter([$this->routePrefix(), $this->variableNamePlural()]));
+    }
+
+    public function serviceProviderRouteMiddleware(): string
+    {
+        if($routeMiddleware = $this->routeMiddleware()) {
+            return "middleware('{$routeMiddleware}')->";
+        }
+
+        return '';
+    }
+
+    public function serviceProviderRoutePrefix(): string
+    {
+        if($routePrefix = $this->routePrefix()) {
+            return "prefix('{$routePrefix}')->";
+        }
+
+        return '';
+    }
+
     public function baseNamespace(): string
     {
         return config('tractor.base_namespace');
@@ -190,6 +223,11 @@ abstract class AbstractGenerator
             '{{modelName}}' => $this->name(),
             '{{modelNamePlural}}' => $this->namePlural(),
             '{{variableName}}' => $this->variableName(),
+            '{{urlPath}}' => $this->urlPath(),
+            '{{routeMiddleware}}' => $this->routeMiddleware(),
+            '{{routePrefix}}' => $this->routePrefix(),
+            '{{serviceProviderRouteMiddleware}}' => $this->serviceProviderRouteMiddleware(),
+            '{{serviceProviderRoutePrefix}}' => $this->serviceProviderRoutePrefix(),
             '{{variableNamePlural}}' => $this->variableNamePlural(),
             '{{userModelClassName}}' => $this->userModelClassName(),
             '{{userModelShortName}}' => $this->userModelShortName(),

@@ -8,6 +8,8 @@ return [
     'default_role_name' => 'admin',
     'default_guard_name' => 'web',
     'user_factory_class' => \Database\Factories\UserFactory::class,
+    'route_middleware' => 'web',
+    'route_prefix' => 'api',
     'composer' => [
         'vendor_prefix' => 'app',
     ],

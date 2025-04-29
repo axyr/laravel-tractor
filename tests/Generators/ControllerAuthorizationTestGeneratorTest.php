@@ -33,14 +33,17 @@ class ControllerAuthorizationTestGeneratorTest extends GeneratorTestAbstract
                     'function testShowPostAuthorization',
                     'function testDeletePostAuthorization',
                     '$post = PostFactory::new()->create();',
-                    '$response = $this->actingAs($user)->get(\'posts\');',
+                    '$response = $this->actingAs($user)->get(\'abc/posts\');',
                     '$this->assertEquals($allow, $user->can(\'viewAny\', Post::class));',
                     '$this->assertEquals($allow, $user->can(\'create\', Post::class));',
                     '$this->assertEquals($allow, $user->can(\'update\', $post));',
                     '$this->assertEquals($allow, $user->can(\'view\', $post));',
                     '$this->assertEquals($allow, $user->can(\'delete\', $post));',
-                    '"posts/{$post->id}"',
+                    '"abc/posts/{$post->id}"',
                 ],
+                'config' =>[
+                    'tractor.route_prefix' => 'abc'
+                ]
             ],
         ];
     }

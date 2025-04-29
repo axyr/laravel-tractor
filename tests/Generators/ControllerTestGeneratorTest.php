@@ -33,9 +33,12 @@ class ControllerTestGeneratorTest extends GeneratorTestAbstract
                     'function testItUpdatesAPost',
                     'function testItDeletesAPost',
                     '$post = PostFactory::new()->create();',
-                    '->getJson(\'posts?per_page=10\')',
-                    '"posts/{$post->id}"',
+                    '->getJson(\'abc/posts?per_page=10\')',
+                    '"abc/posts/{$post->id}"',
                 ],
+                'config' =>[
+                    'tractor.route_prefix' => 'abc'
+                ]
             ],
         ];
     }

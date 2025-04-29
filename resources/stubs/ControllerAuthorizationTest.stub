@@ -32,7 +32,7 @@ class {{testClassName}} extends TestCase
     {
         $user = $this->userWithRole($role);
 
-        $response = $this->actingAs($user)->get('{{variableNamePlural}}');
+        $response = $this->actingAs($user)->get('{{urlPath}}');
 
         $this->assertEquals($allow, $user->can('viewAny', {{modelName}}::class));
         $this->assertEquals($allow, $response->getStatusCode() !== Response::HTTP_FORBIDDEN, $response->getStatusCode());
@@ -43,7 +43,7 @@ class {{testClassName}} extends TestCase
     {
         $user = $this->userWithRole($role);
 
-        $response = $this->actingAs($user)->post('{{variableNamePlural}}');
+        $response = $this->actingAs($user)->post('{{urlPath}}');
 
         $this->assertEquals($allow, $user->can('create', {{modelName}}::class));
         $this->assertEquals($allow, $response->getStatusCode() !== Response::HTTP_FORBIDDEN, $response->getStatusCode());
@@ -55,7 +55,7 @@ class {{testClassName}} extends TestCase
         $user = $this->userWithRole($role);
         ${{variableName}} = {{modelName}}Factory::new()->create();
 
-        $response = $this->actingAs($user)->patch("{{variableNamePlural}}/{${{variableName}}->id}");
+        $response = $this->actingAs($user)->patch("{{urlPath}}/{${{variableName}}->id}");
 
         $this->assertEquals($allow, $user->can('update', ${{variableName}}));
         $this->assertEquals($allow, $response->getStatusCode() !== Response::HTTP_FORBIDDEN, $response->getStatusCode());
@@ -67,7 +67,7 @@ class {{testClassName}} extends TestCase
         $user = $this->userWithRole($role);
         ${{variableName}} = {{modelName}}Factory::new()->create();
 
-        $response = $this->actingAs($user)->get("{{variableNamePlural}}/{${{variableName}}->id}");
+        $response = $this->actingAs($user)->get("{{urlPath}}/{${{variableName}}->id}");
 
         $this->assertEquals($allow, $user->can('view', ${{variableName}}));
         $this->assertEquals($allow, $response->getStatusCode() !== Response::HTTP_FORBIDDEN, $response->getStatusCode());
@@ -79,7 +79,7 @@ class {{testClassName}} extends TestCase
         $user = $this->userWithRole($role);
         ${{variableName}} = {{modelName}}Factory::new()->create();
 
-        $response = $this->actingAs($user)->delete("{{variableNamePlural}}/{${{variableName}}->id}");
+        $response = $this->actingAs($user)->delete("{{urlPath}}/{${{variableName}}->id}");
 
         $this->assertEquals($allow, $user->can('delete', ${{variableName}}));
         $this->assertEquals($allow, $response->getStatusCode() !== Response::HTTP_FORBIDDEN, $response->getStatusCode());

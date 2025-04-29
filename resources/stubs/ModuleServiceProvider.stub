@@ -14,7 +14,7 @@ class {{serviceProviderName}} extends ServiceProvider
 
     public function boot(): void
     {
-        Route::middleware('web')->group(function () {
+        Route::{{serviceProviderRouteMiddleware}}{{serviceProviderRoutePrefix}}group(function () {
             $this->loadRoutesFrom(__DIR__ . '../../routes.php');
         });
     }
