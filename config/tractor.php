@@ -7,6 +7,7 @@ return [
     'test_directory' => 'tests',
     'default_role_name' => 'admin',
     'default_guard_name' => 'web',
+    'user_factory_class' => \Database\Factories\UserFactory::class,
     'composer' => [
         'vendor_prefix' => 'app',
     ],

@@ -6,7 +6,7 @@ use {{userModelClassName}};
 use {{baseNamespace}}\{{moduleName}}\Factories\{{modelName}}Factory;
 use {{baseNamespace}}\{{moduleName}}\Models\{{modelName}};
 use {{baseNamespace}}\{{moduleName}}\Seeders\{{modelName}}PermissionSeeder;
-use Database\Factories\UserFactory;
+use {{userFactoryClassName}};
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use PHPUnit\Framework\Attributes\DataProvider;
 use {{roleModelClassName}};

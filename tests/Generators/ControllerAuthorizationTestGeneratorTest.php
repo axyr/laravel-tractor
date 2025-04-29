@@ -25,6 +25,7 @@ class ControllerAuthorizationTestGeneratorTest extends GeneratorTestAbstract
                     'use App\Modules\Posts\Models\Post;',
                     'use App\Modules\Posts\Seeders\PostPermissionSeeder;',
                     'use Spatie\Permission\Models\Role;',
+                    'use Database\Factories\UserFactory;',
                     '(new PostPermissionSeeder)->run();',
                     'function testListPostAuthorization',
                     'function testCreatePostAuthorization',

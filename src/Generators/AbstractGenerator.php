@@ -167,6 +167,11 @@ abstract class AbstractGenerator
         return config('permission.models.role');
     }
 
+    public function userFactoryClassName(): string
+    {
+        return config('tractor.user_factory_class');
+    }
+
     public function userModelShortName(): string
     {
         $reflect = new ReflectionClass($this->userModelClassName());
@@ -189,6 +194,7 @@ abstract class AbstractGenerator
             '{{userModelClassName}}' => $this->userModelClassName(),
             '{{userModelShortName}}' => $this->userModelShortName(),
             '{{roleModelClassName}}' => $this->roleModelClassName(),
+            '{{userFactoryClassName}}' => $this->userFactoryClassName(),
         ];
     }
 }
