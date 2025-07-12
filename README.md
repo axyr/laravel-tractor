@@ -326,6 +326,22 @@ Run the composer install command from the terminal:
 composer require axyr/laravel-tractor
 ```
 
+Add this snippet to the "extra" key in your composer file:
+
+```json
+"extra": {
+    "merge-plugin": {
+        "merge-extra": true,
+        "merge-extra-deep": true,
+        "include": [
+            "app-modules/*/composer.json"
+        ]
+    }
+}
+```
+
+This will enable the autoload of modules in a custom directory outside app.
+
 Then you can generate a Module for a Model resource:
 
 ```shell
