@@ -345,7 +345,7 @@ This will enable the autoload of modules in a custom directory outside app.
 Then you can generate a Module for a Model resource:
 
 ```shell
-php artisan crud:generate Post -m
+php artisan tractor:generate Post
 ```
 
 After that you can run the tests:

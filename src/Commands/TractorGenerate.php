@@ -5,17 +5,18 @@ namespace Axyr\Tractor\Commands;
 use Axyr\Tractor\Generators\CombinedGenerator;
 use Illuminate\Console\Command;
 use Illuminate\Support\Str;
+use Symfony\Component\Process\Process;
 
 class TractorGenerate extends Command
 {
     protected $signature = 'tractor:generate
-        { name : The Model to generate }
-        { --a|all : Generate a migration, permission seeder, factory, policy, resource controller, form request, repository and filter classes for the model }
+        { name : The model to generate }
+        { --a|all : Generate all related classes (migration, permission seeder, factory, policy, resource controller, form request, repository, and filter) }
         { --m|migration : Create a new migration file for the model }
-        { --module= : The Module name to generate the Model in. Defaults to plural form of the name argument }
+        { --module= : The module name to generate the model in (defaults to plural form of the name) }
     ';
 
-    protected $description = 'Generate a module structure for a restfull resource based json api module.';
+    protected $description = 'Generate a complete RESTful JSON API module structure for the given model.';
 
     public function handle(): void
     {
@@ -28,29 +29,44 @@ class TractorGenerate extends Command
         if ($this->option('migration')) {
             $this->createMigration();
         }
+
+        $this->runComposerDumpAutoload();
     }
 
-    public function createClassFiles(): void
+    protected function createClassFiles(): void
     {
         $generator = new CombinedGenerator($this->argument('name'), $this->option('module'));
 
-        $this->info('Generating classes');
-
+        $this->info('Generating class files...');
         $generator->generate();
 
-        foreach ($generator->generatedFiles() as $generatedFile) {
-            $this->line($generatedFile);
+        foreach ($generator->generatedFiles() as $file) {
+            $this->line($file);
         }
 
-        $this->info('Classes generated');
+        $this->info('Class generation complete.');
     }
 
-    public function createMigration(): void
+    protected function createMigration(): void
     {
-        $name = sprintf('create_%s_table', strtolower(Str::plural($this->argument('name'))));
+        $table = Str::plural(Str::snake($this->argument('name')));
+        $migrationName = "create_{$table}_table";
 
-        $this->call('make:migration', [
-            'name' => $name,
-        ]);
+        $this->call('make:migration', ['name' => $migrationName]);
+    }
+
+    protected function runComposerDumpAutoload(): void
+    {
+        $this->info('Running composer dump-autoload...');
+
+        $process = Process::fromShellCommandline('composer dump-autoload');
+        $process->run();
+
+        if ($process->isSuccessful()) {
+            $this->info('Composer autoload updated.');
+        } else {
+            $this->error('Failed to run composer dump-autoload.');
+            $this->line($process->getErrorOutput());
+        }
     }
 }

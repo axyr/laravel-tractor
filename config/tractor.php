@@ -11,6 +11,6 @@ return [
     'route_middleware' => 'web',
     'route_prefix' => 'api',
     'composer' => [
-        'vendor_prefix' => 'app',
+        'vendor_prefix' => 'modules',
     ],
 ];
