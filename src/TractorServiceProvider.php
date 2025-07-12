@@ -7,6 +7,9 @@ use Illuminate\Filesystem\Filesystem;
 use Illuminate\Foundation\PackageManifest as BasePackageManifest;
 use Illuminate\Support\ServiceProvider;
 
+use Illuminate\Database\Eloquent\Builder;
+use Axyr\Tractor\Filters\Contracts\Filters;
+
 class TractorServiceProvider extends ServiceProvider
 {
     public function register(): void
@@ -18,6 +21,11 @@ class TractorServiceProvider extends ServiceProvider
     public function boot(): void
     {
         $this->bootCommands();
+
+        Builder::macro('filterBy', function (Filters $filters): Builder {
+            /** @var Builder $this */
+            return $filters->applyToQuery($this);
+        });
     }
 
     protected function registerConfig(): void
