@@ -340,6 +340,14 @@ Add this snippet to the "extra" key in your composer file:
 }
 ```
 
+The include the package test, add the testsuite to the phpunit.xml file:
+
+```xml
+<testsuite name="Modules">
+    <directory>./app-modules/*/tests</directory>
+</testsuite>
+```
+
 This will enable the autoload of modules in a custom directory outside app.
 
 Then you can generate a Module for a Model resource:
