@@ -19,7 +19,7 @@ class ComposerGeneratorTest extends GeneratorTestAbstract
                 'module' => '',
                 'expectedPath' => 'app-modules/Posts/composer.json',
                 'expectedStrings' => [
-                    '"name": "app/posts"',
+                    '"name": "modules/posts"',
                     '"App\\\\Modules\\\\Posts\\\\": "src/"',
                     '"App\\\\Modules\\\\Posts\\\\Tests\\\\": "tests/"',
                     '"App\\\\Modules\\\\Posts\\\\PostServiceProvider"',
