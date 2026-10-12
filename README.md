@@ -320,10 +320,20 @@ class PostControllerAuthorizationTest extends TestCase
 ## Quick start
 
 
-Run the composer install command from the terminal:
+Tractor requires PHP 8.3+ and Laravel 12 or 13.
+
+Allow the composer merge plugin and run the composer install command from the terminal:
 
 ```shell
+composer config allow-plugins.wikimedia/composer-merge-plugin true
 composer require axyr/laravel-tractor
+```
+
+The generated modules use [spatie/laravel-permission](https://spatie.be/docs/laravel-permission). Publish its migration and add the `HasRoles` trait to your `User` model:
+
+```shell
+php artisan vendor:publish --provider="Spatie\Permission\PermissionServiceProvider"
+php artisan migrate
 ```
 
 Add this snippet to the "extra" key in your composer file:
