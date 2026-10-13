@@ -14,10 +14,10 @@ The scaffolder is mainly targetted on stand alone API's without any Blade, Livew
 After installing, you can generate all required files for a working CRUD based module:
 
 ```shell 
-php artisan tractor:generate Post
+php artisan tractor:generate Post --all
 ```
 
-Above command will generate a basic module structure with all the files needed for a model based JSON API.
+Above command will generate a basic module structure with all the files needed for a model based JSON API, including the migration. Without `--all` (or `-m`) no migration is created and the generated tests fail.
 
 The module will have boilerplate tests that tests all the permission authorization, database operations and filters.
 
@@ -363,7 +363,7 @@ This will enable the autoload of modules in a custom directory outside app.
 Then you can generate a Module for a Model resource:
 
 ```shell
-php artisan tractor:generate Post
+php artisan tractor:generate Post --all
 ```
 
 After that you can run the tests:
